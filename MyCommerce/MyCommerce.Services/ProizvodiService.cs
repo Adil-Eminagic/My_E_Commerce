@@ -5,13 +5,13 @@ namespace MyCommerce.Services
 {
     public class ProizvodiService : IProizvodiService
     {
-        List<Proizvodi> proizvodis = new List<Proizvodi> { new Proizvodi() {
+        List<Model.Proizvodi> proizvodis = new List<Model.Proizvodi> { new Model.Proizvodi() {
         ProizvodId= 1,
         Naziv="Lapotop"
         } };
 
 
-        public IList<Proizvodi> Get()
+        public IList<Model.Proizvodi> Get()
         {
             return proizvodis;
         }

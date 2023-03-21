@@ -5,6 +5,6 @@ namespace MyCommerce.Services
 {
     public interface IProizvodiService
     {
-        IList<Proizvodi> Get();
+        IList<Model.Proizvodi> Get();
     }
 }
