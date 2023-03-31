@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage;
 using MyCommerce.Model.Requests;
-using MyCommerce.Services;
 using MyCommerce.Services.Database;
+using MyCommerce.Services.Interfaces;
 
 namespace MyCommerce.Api.Controllers
 {
@@ -19,9 +19,9 @@ namespace MyCommerce.Api.Controllers
         }
 
         [HttpGet(Name ="GetKorisnici")]
-        public IEnumerable<Model.Korisnici> Get()
+        public async Task<IEnumerable<Model.Korisnici>> Get()
         {
-            return service.Get();
+            return await service.Get();
         }
 
         [HttpPost(Name ="InsertKorisnika")]

@@ -2,12 +2,14 @@
 
 using AutoMapper;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.EntityFrameworkCore;
 using MyCommerce.Model.Requests;
 using MyCommerce.Services.Database;
+using MyCommerce.Services.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace MyCommerce.Services
+namespace MyCommerce.Services.Services
 {
     public class KorisniciService : IKorisniciService
     {
@@ -20,9 +22,9 @@ namespace MyCommerce.Services
             Mapper = mapper;
         }
 
-        public List<Model.Korisnici> Get()
+        public async Task<List<Model.Korisnici>> Get()
         {
-            var entities = Context.Korisnicis.ToList();
+            var entities = await Context.Korisnicis.ToListAsync();
 
             var dto = Mapper.Map<List<Model.Korisnici>>(entities);
 
@@ -32,13 +34,13 @@ namespace MyCommerce.Services
 
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
-            var korisnik = Mapper.Map<Database.Korisnici>(request);
+            var korisnik = Mapper.Map<Korisnici>(request);
 
             var salt = GenerateSalt();
-            var hash=GenerateHash(request.Password, salt);
+            var hash = GenerateHash(request.Password, salt);
 
             korisnik.LozinkaSalt = salt.ToString()!;
-            korisnik.LozinkaHash= hash;
+            korisnik.LozinkaHash = hash;
 
             Context.Korisnicis.Add(korisnik);
             Context.SaveChanges();
@@ -85,7 +87,7 @@ namespace MyCommerce.Services
             }
             else
                 return new Model.Korisnici();
-           
+
         }
     }
 }

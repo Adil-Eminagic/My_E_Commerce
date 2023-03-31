@@ -11,6 +11,8 @@ namespace MyCommerce.Services
             CreateMap<Database.Korisnici,Model.Korisnici>();
             CreateMap<KorisniciInsertRequest, Database.Korisnici>();
             CreateMap<KorisniciUpdateRequest, Database.Korisnici>();
+            CreateMap<Database.JediniceMjere, Model.JediniceMjere>();
+            CreateMap<Database.VrsteProizvodum, Model.VrsteProizvodum>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyCommerce.Model;
-using MyCommerce.Services;
+using MyCommerce.Services.Interfaces;
 
 namespace MyCommerce.Api.Controllers
 {

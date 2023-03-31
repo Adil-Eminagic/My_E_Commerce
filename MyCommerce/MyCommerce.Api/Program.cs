@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MyCommerce.Services;
 using MyCommerce.Services.Database;
+using MyCommerce.Services.Interfaces;
+using MyCommerce.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IProizvodiService, ProizvodiService>();
 builder.Services.AddScoped<IKorisniciService, KorisniciService>();
+builder.Services.AddScoped<IJediniceMjereService,JediniceMjereService>();
+builder.Services.AddScoped<IVrsteProizvodumService, VrsteProizvodumService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddControllers();
